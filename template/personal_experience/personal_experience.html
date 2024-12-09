@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ project.name }}</h1>
+<p>{{ project.description }}</p>
+<div>
+    <h3>Rate this project</h3>
+    <form method="post" action="/api/projects/{{ project.name }}/rate/">
+        {% csrf_token %}
+        <input type="number" name="rating" min="1" max="5" required>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+{% endblock %}
